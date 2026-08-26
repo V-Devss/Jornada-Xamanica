@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌿 Guia do Xamã — Conhecimento, Natureza e Tradição</title>
+<meta name="description" content="Portal educativo sobre xamanismo, cosmovisões indígenas, plantas, rituais, ciência e cultura.">
+<style>
+/* ===================== RESET & BASE ===================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#050503;
+  --black2:#0a0d08;
+  --forest:#0b1f14;
+  --forest2:#123a24;
+  --moss:#3c5a3f;
+  --earth:#4a3625;
+  --earth2:#6b4d34;
+  --beige:#e8dcc4;
+  --gold:#c9a24b;
+  --gold-soft:#a68a4a;
+  --violet:#8a6bb0;
+  --violet-soft:#6b4a8a;
+  --text:#e6ddc8;
+  --text-dim:#a89f8a;
+  --glass:rgba(20,28,20,0.55);
+  --border:rgba(201,162,75,0.25);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Georgia','Palatino Linotype',serif;
+  background:var(--black);
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+h1,h2,h3,h4{font-family:'Trajan Pro','Palatino Linotype',Georgia,serif;letter-spacing:1px;font-weight:600;color:var(--beige);}
+a{color:var(--gold);text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+img{max-width:100%;display:block;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+section{position:relative;padding:100px 0 60px;}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);text-align:center;margin-bottom:10px;color:var(--gold);text-shadow:0 0 20px rgba(201,162,75,.25);}
+.section-sub{text-align:center;color:var(--text-dim);font-style:italic;margin-bottom:50px;font-size:1.05rem;}
+.badge{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:20px;font-size:.75rem;color:var(--gold);background:rgba(201,162,75,.08);margin-bottom:14px;letter-spacing:1px;text-transform:uppercase;}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+
+/* ===================== FOREST BACKGROUND ===================== */
+.forest-bg{
+  position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(ellipse at 50% 15%, rgba(60,90,63,.25), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(230,220,180,.08), transparent 40%),
+    linear-gradient(180deg,#04120a 0%, #050a06 45%, #030402 100%);
+}
+.stars{position:fixed;inset:0;z-index:-2;pointer-events:none;}
+.star{position:absolute;background:#fff;border-radius:50%;opacity:.6;animation:twinkle 4s ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.2;}50%{opacity:.9;}}
+.fog{position:fixed;left:-20%;width:140%;height:220px;bottom:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg, transparent, rgba(20,40,25,.35) 40%, rgba(5,8,5,.55));
+  filter:blur(10px);animation:fogmove 40s linear infinite;}
+.fog.fog2{bottom:20%;height:160px;opacity:.5;animation-duration:60s;animation-direction:reverse;}
+@keyframes fogmove{0%{transform:translateX(-5%);}50%{transform:translateX(5%);}100%{transform:translateX(-5%);}}
+.leaf{position:fixed;top:-40px;z-index:-1;pointer-events:none;font-size:18px;opacity:.7;animation:leaffall linear infinite;}
+@keyframes leaffall{
+  0%{transform:translateY(-40px) translateX(0) rotate(0deg);opacity:0;}
+  10%{opacity:.7;}
+  100%{transform:translateY(110vh) translateX(60px) rotate(340deg);opacity:0;}
+}
+.tree-silhouette{position:fixed;bottom:0;z-index:-1;pointer-events:none;opacity:.5;}
+.tree-silhouette.left{left:0;width:min(30vw,320px);}
+.tree-silhouette.right{right:0;width:min(30vw,320px);transform:scaleX(-1);}
+
+/* ===================== INTRO / SPLASH ===================== */
+#intro{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(201,162,75,.10), transparent 45%),
+    radial-gradient(circle at 75% 15%, rgba(230,224,200,.15), transparent 20%),
+    linear-gradient(180deg,#030602,#050a05 40%,#020301 100%);
+  transition:opacity 1.4s ease, visibility 1.4s ease;
+  padding:20px;
+}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.moon{
+  position:absolute;top:8%;right:12%;width:110px;height:110px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, #fffbe9, #e8dcae 60%, #b9a978 100%);
+  box-shadow:0 0 60px 20px rgba(232,220,166,.25);
+  animation:moonglow 6s ease-in-out infinite;
+}
+@keyframes moonglow{0%,100%{box-shadow:0 0 60px 20px rgba(232,220,166,.2);}50%{box-shadow:0 0 90px 30px rgba(232,220,166,.35);}}
+#intro .badge-top{color:var(--violet);}
+.intro-title{
+  font-size:clamp(2.4rem,7vw,5rem);
+  color:var(--beige);
+  text-shadow:0 0 30px rgba(201,162,75,.4), 0 0 70px rgba(139,107,176,.25);
+  margin-bottom:14px;
+  letter-spacing:3px;
+  animation:fadeUp 1.6s ease both;
+}
+.intro-subtitle{color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-size:.95rem;margin-bottom:26px;animation:fadeUp 1.6s .3s ease both;}
+.intro-text{max-width:600px;color:var(--text-dim);font-style:italic;margin-bottom:40px;animation:fadeUp 1.6s .5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.btn-enter{
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  color:#1a1204;font-weight:bold;letter-spacing:2px;text-transform:uppercase;
+  padding:16px 42px;border:none;border-radius:40px;font-size:1rem;
+  box-shadow:0 0 25px rgba(201,162,75,.4);
+  animation:fadeUp 1.6s .7s ease both, pulseGlow 3s ease-in-out infinite;
+  transition:transform .3s ease;
+}
+.btn-enter:hover{transform:scale(1.06);}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 25px rgba(201,162,75,.4);}50%{box-shadow:0 0 45px rgba(201,162,75,.7);}}
+
+/* ===================== NAVBAR ===================== */
+header.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 26px;
+  background:rgba(6,10,6,.75);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.logo{font-size:1.25rem;color:var(--gold);font-weight:bold;letter-spacing:1px;}
+nav.nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+nav.nav-links a{
+  color:var(--text-dim);font-size:.85rem;padding:8px 12px;border-radius:6px;transition:.25s;white-space:nowrap;
+}
+nav.nav-links a:hover, nav.nav-links a.active{color:var(--gold);background:rgba(201,162,75,.08);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.search-toggle,.hamburger{
+  background:transparent;border:1px solid var(--border);color:var(--beige);
+  width:40px;height:40px;border-radius:8px;font-size:1.1rem;display:flex;align-items:center;justify-content:center;
+}
+.hamburger{display:none;flex-direction:column;gap:4px;}
+.hamburger span{width:20px;height:2px;background:var(--gold);display:block;}
+@media(max-width:980px){
+  nav.nav-links{
+    position:fixed;top:64px;left:0;right:0;bottom:0;
+    background:rgba(4,7,4,.97);flex-direction:column;padding:20px;gap:2px;
+    transform:translateX(-100%);transition:transform .4s ease;overflow-y:auto;
+  }
+  nav.nav-links.open{transform:translateX(0);}
+  nav.nav-links a{font-size:1.1rem;padding:14px 10px;border-bottom:1px solid rgba(255,255,255,.05);}
+  .hamburger{display:flex;}
+}
+
+/* progress bar */
+.progress-wrap{
+  position:fixed;top:62px;left:0;right:0;z-index:499;
+  background:rgba(6,10,6,.6);padding:6px 20px;
+  font-size:.7rem;letter-spacing:1px;color:var(--text-dim);text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+}
+.progress-track{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--violet-soft),var(--gold));transition:width .6s ease;box-shadow:0 0 10px rgba(201,162,75,.5);}
+#progress-label{white-space:nowrap;color:var(--gold);font-weight:bold;}
+
+main{padding-top:96px;}
+
+/* ===================== GLOBAL SEARCH PANEL ===================== */
+#search-panel{
+  position:fixed;top:0;left:0;right:0;bottom:0;z-index:900;
+  background:rgba(3,5,3,.92);backdrop-filter:blur(6px);
+  display:none;align-items:flex-start;justify-content:center;padding:80px 20px;
+}
+#search-panel.open{display:flex;}
+.search-box{width:100%;max-width:640px;}
+.search-box input{
+  width:100%;padding:18px 20px;font-size:1.2rem;border-radius:12px;
+  border:1px solid var(--gold);background:var(--forest);color:var(--beige);
+}
+.search-results{margin-top:16px;display:flex;flex-direction:column;gap:8px;max-height:60vh;overflow-y:auto;}
+.search-result-item{
+  padding:14px 16px;background:var(--glass);border:1px solid var(--border);border-radius:10px;color:var(--text);
+}
+.search-result-item b{color:var(--gold);}
+.search-close{margin-top:16px;color:var(--text-dim);}
+
+/* ===================== HERO / HOME ===================== */
+#inicio .hero{
+  text-align:center;padding:60px 0 40px;
+}
+#inicio .hero h1{font-size:clamp(2.2rem,5vw,3.2rem);}
+#inicio .hero p{max-width:700px;margin:16px auto 0;color:var(--text-dim);font-style:italic;}
+
+.card-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;margin-top:20px;
+}
+.path-card{
+  background:linear-gradient(160deg, rgba(18,58,36,.5), rgba(10,18,12,.7));
+  border:1px solid var(--border);border-radius:16px;padding:28px 24px;
+  cursor:pointer;transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  text-align:left;position:relative;overflow:hidden;
+}
+.path-card::before{
+  content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 0%, rgba(201,162,75,.12), transparent 60%);
+  opacity:0;transition:opacity .35s ease;
+}
+.path-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,.5);border-color:var(--gold);}
+.path-card:hover::before{opacity:1;}
+.path-card .icon{font-size:2.4rem;margin-bottom:12px;display:block;}
+.path-card h3{color:var(--gold);margin-bottom:10px;font-size:1.2rem;}
+.path-card p{color:var(--text-dim);font-size:.92rem;}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ===================== EXPANDABLE CARDS (Fundamentos) ===================== */
+.accordion{display:flex;flex-direction:column;gap:16px;max-width:900px;margin:0 auto;}
+.acc-item{
+  background:var(--glass);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+}
+.acc-head{
+  display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;
+}
+.acc-head h3{color:var(--beige);font-size:1.1rem;}
+.acc-head .plus{color:var(--gold);font-size:1.3rem;transition:transform .3s ease;}
+.acc-item.open .plus{transform:rotate(45deg);}
+.acc-summary{padding:0 24px 16px;color:var(--text-dim);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .5s ease;padding:0 24px;}
+.acc-item.open .acc-body{max-height:900px;padding-bottom:24px;}
+.acc-body p{margin-bottom:12px;color:var(--text);font-size:.95rem;}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.tag{font-size:.7rem;padding:4px 10px;border:1px solid var(--border);border-radius:20px;color:var(--gold);}
+
+/* ===================== COSMOVISÃO TREE ===================== */
+.tree-diagram{max-width:420px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:0;}
+.tree-node{
+  width:100%;text-align:center;padding:16px;border:1px solid var(--border);border-radius:12px;
+  background:var(--glass);margin-bottom:4px;cursor:pointer;transition:.3s;color:var(--beige);font-weight:bold;
+}
+.tree-node:hover{border-color:var(--gold);background:rgba(201,162,75,.1);transform:scale(1.03);}
+.tree-arrow{color:var(--gold);font-size:1.4rem;margin:4px 0;}
+
+/* ===================== THREE WORLDS ===================== */
+.worlds{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+.world-circle{
+  width:220px;height:220px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;
+  cursor:pointer;border:1px solid var(--border);transition:.4s;padding:20px;
+}
+.world-circle:hover{transform:scale(1.06);box-shadow:0 0 40px rgba(201,162,75,.3);}
+.world-lower{background:radial-gradient(circle, rgba(107,74,138,.35), rgba(10,5,15,.6));}
+.world-middle{background:radial-gradient(circle, rgba(60,90,63,.4), rgba(10,18,10,.6));}
+.world-upper{background:radial-gradient(circle, rgba(201,162,75,.3), rgba(15,12,5,.6));}
+.world-circle .icon{font-size:2.2rem;}
+.world-circle h4{margin:8px 0;color:var(--beige);}
+.world-circle p{font-size:.78rem;color:var(--text-dim);}
+
+/* ===================== GALLERY (animais / instrumentos) ===================== */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;}
+.gal-card{
+  background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:22px;text-align:center;
+  cursor:pointer;transition:.35s;
+}
+.gal-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 14px 30px rgba(0,0,0,.4);}
+.gal-card .emoji{font-size:3rem;margin-bottom:10px;filter:drop-shadow(0 0 12px rgba(201,162,75,.3));}
+.gal-card h4{color:var(--gold);margin-bottom:6px;}
+.gal-card p{font-size:.82rem;color:var(--text-dim);}
+
+/* ===================== TABS (Rapé) ===================== */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:30px;}
+.tab-btn{
+  padding:10px 18px;border-radius:30px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:.85rem;
+}
+.tab-btn.active{background:var(--gold);color:#1a1204;font-weight:bold;border-color:var(--gold);}
+.tab-panel{display:none;max-width:820px;margin:0 auto;}
+.tab-panel.active{display:block;animation:fadeUp .6s ease both;}
+.info-box{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px;}
+.info-box h4{color:var(--gold);margin-bottom:10px;}
+.alert-box{
+  background:rgba(139,60,40,.15);border:1px solid rgba(220,120,80,.4);border-radius:14px;padding:22px;color:#f0d9c8;
+}
+.alert-box strong{color:#f0a878;}
+
+/* botanical card */
+.botanic-card{
+  background:linear-gradient(160deg, rgba(18,58,36,.5), rgba(10,18,12,.7));
+  border:1px solid var(--border);border-radius:14px;padding:24px;cursor:pointer;transition:.3s;
+}
+.botanic-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.botanic-card h4{color:var(--gold);font-style:italic;margin-bottom:6px;}
+.botanic-card span{color:var(--text-dim);font-size:.82rem;}
+.botanic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:820px;margin:0 auto;}
+
+/* chemistry animation */
+.chem-flow{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:520px;margin:30px auto;}
+.chem-step{
+  padding:14px 20px;border:1px solid var(--border);border-radius:10px;background:var(--glass);
+  opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s ease;text-align:center;width:100%;
+}
+.chem-step.show{opacity:1;transform:translateY(0);}
+.chem-step b{color:var(--gold);}
+.chem-arrow{color:var(--gold);opacity:0;transition:opacity .7s ease;}
+.chem-arrow.show{opacity:1;}
+.chem-columns{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;}
+.chem-col{flex:1;min-width:240px;}
+.chem-col h4{text-align:center;color:var(--gold);margin-bottom:10px;}
+
+/* timeline */
+.timeline{display:flex;flex-direction:column;gap:0;max-width:640px;margin:0 auto;position:relative;}
+.timeline::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:linear-gradient(var(--gold),var(--violet));opacity:.4;}
+.tl-item{display:flex;gap:20px;padding:18px 0;cursor:pointer;position:relative;}
+.tl-dot{width:40px;height:40px;border-radius:50%;background:var(--forest2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;transition:.3s;}
+.tl-item:hover .tl-dot{background:var(--gold);color:#1a1204;transform:scale(1.1);}
+.tl-content h4{color:var(--beige);margin-bottom:4px;}
+.tl-content p{color:var(--text-dim);font-size:.85rem;}
+
+/* science columns */
+.sci-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+.sci-col{border-radius:14px;padding:24px;border:1px solid var(--border);background:var(--glass);}
+.sci-col.green{border-top:3px solid #6fbf73;}
+.sci-col.yellow{border-top:3px solid #e0c05c;}
+.sci-col.violet{border-top:3px solid var(--violet);}
+.sci-col h4{margin-bottom:12px;}
+.sci-col ul{padding-left:18px;color:var(--text-dim);font-size:.88rem;display:flex;flex-direction:column;gap:8px;}
+
+/* set setting */
+.setset{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;align-items:stretch;}
+.setset .box{flex:1;min-width:260px;background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:26px;}
+.setset .connector{align-self:center;font-size:2rem;color:var(--gold);}
+
+/* ethics phrase */
+.big-phrase{
+  text-align:center;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--gold);font-style:italic;
+  padding:50px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:50px 0;
+  text-shadow:0 0 30px rgba(201,162,75,.3);
+}
+
+/* glossary */
+.glossary-search{max-width:500px;margin:0 auto 30px;}
+.glossary-search input{
+  width:100%;padding:14px 18px;border-radius:30px;border:1px solid var(--gold);background:var(--forest);color:var(--beige);font-size:1rem;
+}
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.gloss-item{background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:18px 20px;}
+.gloss-item b{color:var(--gold);display:block;margin-bottom:4px;}
+.gloss-item span{font-size:.85rem;color:var(--text-dim);}
+.gloss-empty{text-align:center;color:var(--text-dim);grid-column:1/-1;padding:30px;}
+
+/* knowledge map */
+.kmap{display:flex;flex-direction:column;align-items:center;gap:2px;max-width:340px;margin:0 auto;}
+
+/* sources */
+.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+.source-col{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:22px;}
+.source-col h4{color:var(--gold);margin-bottom:12px;}
+.source-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.source-col li{font-size:.85rem;color:var(--text-dim);padding-left:14px;border-left:2px solid var(--border);}
+.source-col a{font-size:.85rem;}
+
+/* learn button */
+.learn-btn{
+  display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:10px 20px;border-radius:30px;
+  border:1px solid var(--gold);color:var(--gold);background:transparent;font-size:.85rem;letter-spacing:1px;transition:.3s;
+}
+.learn-btn.done{background:var(--gold);color:#1a1204;font-weight:bold;}
+.learn-btn:hover{background:rgba(201,162,75,.15);}
+
+/* generic small button */
+.btn-more{margin-top:14px;background:transparent;border:1px solid var(--border);color:var(--gold);padding:8px 16px;border-radius:20px;font-size:.8rem;transition:.3s;}
+.btn-more:hover{border-color:var(--gold);background:rgba(201,162,75,.08);}
+
+/* ===================== MODAL ===================== */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(2,4,2,.85);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;z-index:800;padding:20px;
+}
+.modal-overlay.open{display:flex;animation:fadeUp .3s ease;}
+.modal-box{
+  background:linear-gradient(160deg,#0e1a10,#080b07);border:1px solid var(--gold);border-radius:18px;
+  max-width:560px;width:100%;max-height:85vh;overflow-y:auto;padding:34px;position:relative;
+  box-shadow:0 0 60px rgba(201,162,75,.15);animation:modalPop .35s ease;
+}
+@keyframes modalPop{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+.modal-close{
+  position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border);
+  color:var(--beige);width:34px;height:34px;border-radius:50%;font-size:1rem;
+}
+.modal-icon{font-size:2.6rem;margin-bottom:14px;}
+.modal-box h3{color:var(--gold);font-size:1.4rem;margin-bottom:14px;padding-right:30px;}
+.modal-box .cat{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.modal-box p{color:var(--text);margin-bottom:12px;font-size:.95rem;}
+.modal-box .related{margin-top:18px;padding-top:14px;border-top:1px solid var(--border);font-size:.8rem;color:var(--text-dim);}
+
+/* footer */
+footer{
+  border-top:1px solid var(--border);padding:60px 0 30px;text-align:center;margin-top:80px;
+  background:linear-gradient(180deg, transparent, rgba(0,0,0,.4));
+}
+footer .logo{display:block;margin-bottom:10px;font-size:1.3rem;}
+footer p.tagline{color:var(--text-dim);font-style:italic;margin-bottom:20px;}
+footer .foot-links{display:flex;gap:20px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;}
+footer .disclaimer{max-width:700px;margin:8px auto;font-size:.78rem;color:var(--text-dim);padding:0 20px;}
+
+/* skip link */
+.skip-link{position:absolute;left:-999px;top:0;background:var(--gold);color:#000;padding:10px 16px;z-index:2000;}
+.skip-link:focus{left:10px;top:10px;}
+
+@media(max-width:600px){
+  section{padding:70px 0 40px;}
+  .worlds{gap:16px;}
+  .world-circle{width:170px;height:170px;padding:14px;}
+  .setset .connector{display:none;}
+}
+</style>
+</head>
+<body>
+
+<a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+
+<!-- ambient bg -->
+<div class="forest-bg" aria-hidden="true"></div>
+<div class="stars" id="stars" aria-hidden="true"></div>
+<div class="fog" aria-hidden="true"></div>
+<div class="fog fog2" aria-hidden="true"></div>
+<div id="leaves-container" aria-hidden="true"></div>
+<svg class="tree-silhouette left" viewBox="0 0 200 500" aria-hidden="true"><path d="M100 500 L100 300 Q60 280 50 220 Q40 180 70 150 Q50 120 70 80 Q90 40 100 0 Q110 40 130 80 Q150 120 130 150 Q160 180 150 220 Q140 280 100 300 Z" fill="#020602"/></svg>
+<svg class="tree-silhouette right" viewBox="0 0 200 500" aria-hidden="true"><path d="M100 500 L100 300 Q60 280 50 220 Q40 180 70 150 Q50 120 70 80 Q90 40 100 0 Q110 40 130 80 Q150 120 130 150 Q160 180 150 220 Q140 280 100 300 Z" fill="#020602"/></svg>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="moon" aria-hidden="true"></div>
+  <span class="badge badge-top">Conhecimento • Natureza • Tradição • Cosmovisão</span>
+  <h1 class="intro-title">🌿 GUIA DO XAMÃ</h1>
+  <p class="intro-text">Um espaço educativo para explorar diferentes tradições, conhecimentos indígenas, relações com a natureza, plantas, símbolos, instrumentos, ciência e cultura.</p>
+  <button class="btn-enter" id="btn-enter">Entrar no Guia</button>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">🌿 GUIA DO XAMÃ</div>
+  <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+    <a href="#inicio">Início</a>
+    <a href="#fundamentos">Fundamentos</a>
+    <a href="#cosmovisao">Cosmovisão</a>
+    <a href="#animais">Animais</a>
+    <a href="#instrumentos">Instrumentos</a>
+    <a href="#rape">Rapé</a>
+    <a href="#ayahuasca">Ayahuasca</a>
+    <a href="#ciencia">Ciência</a>
+    <a href="#cultura">Cultura &amp; Ética</a>
+    <a href="#seguranca">Segurança</a>
+    <a href="#glossario">Glossário</a>
+    <a href="#fontes">Fontes</a>
+  </nav>
+  <div class="nav-right">
+    <button class="search-toggle" id="search-toggle" aria-label="Buscar">🔎</button>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <span>Seu caminho de aprendizado</span>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  <span id="progress-label">0% explorado</span>
+</div>
+
+<!-- SEARCH PANEL -->
+<div id="search-panel" role="dialog" aria-label="Busca global">
+  <div class="search-box">
+    <input type="text" id="global-search" placeholder="O que você quer aprender? (ex: DMT, maracá, animismo...)" autocomplete="off">
+    <div class="search-results" id="global-search-results"></div>
+    <button class="search-close" id="search-close">Fechar (ESC)</button>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- INÍCIO -->
+<section id="inicio">
+  <div class="container">
+    <div class="hero reveal">
+      <span class="badge">Portal de Conhecimento</span>
+      <h1>Escolha seu caminho</h1>
+      <p>Explore diferentes tradições, saberes indígenas e a relação entre ser humano, natureza e cosmovisão — com respeito, profundidade e responsabilidade.</p>
+    </div>
+    <div class="card-grid" id="path-cards">
+      <button class="path-card reveal" data-target="cosmovisao"><span class="icon">🌎</span><h3>COSMOVISÃO</h3><p>Conheça diferentes formas de compreender a relação entre humanidade e natureza.</p></button>
+      <button class="path-card reveal" data-target="rape"><span class="icon">🌬️</span><h3>RAPÉ</h3><p>História, botânica, cultura e instrumentos relacionados ao uso tradicional do tabaco.</p></button>
+      <button class="path-card reveal" data-target="ayahuasca"><span class="icon">🌿</span><h3>AYAHUASCA</h3><p>Plantas, história, química, tradições e pesquisas contemporâneas.</p></button>
+      <button class="path-card reveal" data-target="animais"><span class="icon">🐆</span><h3>ANIMAIS</h3><p>Explore simbolismos e relações culturais com animais de poder.</p></button>
+      <button class="path-card reveal" data-target="instrumentos"><span class="icon">🥁</span><h3>INSTRUMENTOS</h3><p>Conheça instrumentos presentes em diferentes contextos tradicionais.</p></button>
+      <button class="path-card reveal" data-target="cultura"><span class="icon">🔥</span><h3>CULTURA &amp; ÉTICA</h3><p>Aprenda sobre respeito, diversidade cultural e apropriação cultural.</p></button>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDAMENTOS -->
+<section id="fundamentos">
+  <div class="container">
+    <h2 class="section-title reveal">Fundamentos do Xamanismo</h2>
+    <p class="section-sub reveal">Conceitos essenciais para começar essa jornada</p>
+    <div class="accordion reveal" id="fundamentos-accordion"></div>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="fundamentos">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- COSMOVISÃO -->
+<section id="cosmovisao">
+  <div class="container">
+    <h2 class="section-title reveal">Cosmovisão</h2>
+    <p class="section-sub reveal">A árvore que conecta todas as coisas — clique em cada elemento</p>
+    <div class="tree-diagram reveal">
+      <button class="tree-node" data-modal="ser-humano">SER HUMANO</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-modal="natureza">NATUREZA</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-modal="animais-cosmo">ANIMAIS</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-modal="plantas-cosmo">PLANTAS</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-modal="espirito-cosmo">ESPÍRITO / COSMOLOGIA</button>
+    </div>
+
+    <div style="max-width:820px;margin:70px auto 0;">
+      <h3 class="reveal" style="text-align:center;color:var(--gold);margin-bottom:20px;">Animismo</h3>
+      <div class="info-box reveal">
+        <p>O <b>animismo</b> é um conceito antropológico e cosmológico usado para descrever sistemas de crença nos quais elementos da natureza — animais, plantas, rios, montanhas, fenômenos — são compreendidos como possuindo espírito, agência ou personalidade própria.</p>
+        <p><strong>Importante:</strong> essa é uma categoria de análise cultural e cosmológica, não uma afirmação científica de que todos os elementos naturais possuem consciência. A ciência não confirma nem nega cosmologias espirituais — ela opera em outro campo de conhecimento.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="text-align:center;color:var(--gold);margin:70px 0 24px;">Os Três Mundos</h3>
+    <p class="section-sub reveal" style="margin-bottom:30px;">Clique em cada mundo para saber mais</p>
+    <div class="worlds reveal">
+      <div class="world-circle world-lower" data-modal="mundo-inferior"><span class="icon">🌑</span><h4>Mundo Inferior</h4><p>Domínio associado a ancestralidade e forças profundas</p></div>
+      <div class="world-circle world-middle" data-modal="mundo-medio"><span class="icon">🌎</span><h4>Mundo Médio</h4><p>A realidade cotidiana e visível</p></div>
+      <div class="world-circle world-upper" data-modal="mundo-superior"><span class="icon">✨</span><h4>Mundo Superior</h4><p>Domínio associado a sabedoria e visão ampliada</p></div>
+    </div>
+    <p class="reveal" style="max-width:700px;margin:30px auto 0;text-align:center;color:var(--text-dim);font-size:.85rem;">⚠️ Essa divisão em três mundos aparece em determinados sistemas contemporâneos de xamanismo (como o "core shamanism" sistematizado por pesquisadores ocidentais) e <b>não representa universalmente</b> a cosmologia de todos os povos indígenas, que possuem suas próprias estruturas cosmológicas específicas.</p>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="cosmovisao">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- ANIMAIS -->
+<section id="animais">
+  <div class="container">
+    <h2 class="section-title reveal">Animais de Poder</h2>
+    <p class="section-sub reveal">Simbolismos e relações culturais — clique para saber mais</p>
+    <div class="gallery reveal" id="animals-gallery"></div>
+    <p class="reveal" style="max-width:700px;margin:26px auto 0;text-align:center;color:var(--text-dim);font-size:.85rem;">Os simbolismos aqui apresentados refletem interpretações culturais diversas. Nenhum animal é apresentado como guia espiritual "obrigatório" de alguém — essa é uma vivência pessoal e cultural específica de cada tradição.</p>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="animais">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUMENTOS -->
+<section id="instrumentos">
+  <div class="container">
+    <h2 class="section-title reveal">Instrumentos e Objetos Rituais</h2>
+    <p class="section-sub reveal">História, materiais e simbolismo cultural</p>
+    <div class="gallery reveal" id="instruments-gallery"></div>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="instrumentos">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- RAPÉ -->
+<section id="rape">
+  <div class="container">
+    <h2 class="section-title reveal">Rapé</h2>
+    <p class="section-sub reveal">Uso tradicional do tabaco entre povos amazônicos</p>
+    <div class="tabs reveal" id="rape-tabs">
+      <button class="tab-btn active" data-tab="historia">História</button>
+      <button class="tab-btn" data-tab="botanica">Botânica</button>
+      <button class="tab-btn" data-tab="instrumentos-rape">Instrumentos</button>
+      <button class="tab-btn" data-tab="cultura-rape">Cultura</button>
+      <button class="tab-btn" data-tab="seguranca-rape">Segurança</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-historia">
+      <div class="info-box reveal">
+        <h4>História</h4>
+        <p>O uso ritual e medicinal do tabaco (gênero <em>Nicotiana</em>) é milenar entre diversos povos originários das Américas, com registros arqueológicos que remontam a milhares de anos. Entre povos amazônicos, misturas de tabaco em pó — hoje popularmente chamadas de "rapé" — são utilizadas em contextos rituais, de cura e de conexão comunitária há gerações.</p>
+        <p><strong>Importante:</strong> não existe um único "povo indígena" ou uma única tradição de uso — diferentes etnias (como Yawanawá, Katukina, Kaxinawá/Huni Kuin, Matsés, entre muitas outras) possuem receitas, nomes, instrumentos e significados próprios e distintos. Este conteúdo generaliza apenas para fins introdutórios.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-botanica">
+      <div class="botanic-card reveal" data-modal="nicotiana-rustica">
+        <h4>Nicotiana rustica</h4>
+        <span>Uma das espécies de tabaco tradicionalmente utilizadas — clique para saber mais</span>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-instrumentos-rape">
+      <div class="botanic-grid reveal">
+        <div class="botanic-card" data-modal="kuripe"><h4>Kuripe</h4><span>Aplicador de uso individual (autoaplicação)</span></div>
+        <div class="botanic-card" data-modal="tepi"><h4>Tepi</h4><span>Aplicador de uso compartilhado, entre duas pessoas</span></div>
+      </div>
+      <p class="reveal" style="text-align:center;color:var(--text-dim);font-size:.85rem;margin-top:20px;">Este conteúdo é exclusivamente histórico e cultural — não ensinamos como utilizar esses instrumentos.</p>
+    </div>
+
+    <div class="tab-panel" id="tab-cultura-rape">
+      <div class="info-box reveal">
+        <h4>Cultura</h4>
+        <p>Em muitas tradições, o rapé é compartilhado como gesto de acolhimento, cura, foco mental e conexão espiritual, frequentemente acompanhado de cânticos, rezas e intenções específicas de cada povo. O ato de soprar (aplicar) é, em diversas culturas, também um gesto de relação entre quem aplica e quem recebe.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-seguranca-rape">
+      <div class="alert-box reveal">
+        <strong>⚠️ ATENÇÃO</strong>
+        <p style="margin-top:10px;">O rapé pode conter nicotina e não é isento de riscos. Este conteúdo possui finalidade educativa e cultural e não apresenta instruções de preparação, aplicação, dosagem ou consumo.</p>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="rape">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- AYAHUASCA -->
+<section id="ayahuasca">
+  <div class="container">
+    <h2 class="section-title reveal">Ayahuasca</h2>
+    <p class="section-sub reveal">Nixi Pae • Daime • Yagé</p>
+    <div class="info-box reveal" style="max-width:820px;margin:0 auto 40px;">
+      <p>Diferentes povos e tradições possuem nomes, práticas, receitas e cosmologias próprias para essa bebida: entre povos Pano é chamada de <em>Nixi Pae</em>; em contextos de religiões ayahuasqueiras brasileiras, de <em>Daime</em>; em regiões andinas e amazônicas de língua espanhola, de <em>Yagé</em> ou <em>Yajé</em>. Não existe uma tradição única — cada povo e linhagem possui sua própria relação histórica e espiritual com essa preparação.</p>
+    </div>
+
+    <div class="botanic-grid reveal">
+      <div class="botanic-card" data-modal="banisteriopsis"><h4>🌿 Banisteriopsis caapi</h4><span>Mariri / Jagube</span></div>
+      <div class="botanic-card" data-modal="psychotria"><h4>🌿 Psychotria viridis</h4><span>Chacrona / Rainha</span></div>
+    </div>
+
+    <h3 class="reveal" style="text-align:center;color:var(--gold);margin:70px 0 10px;">Química da Ayahuasca</h3>
+    <p class="section-sub reveal">Uma explicação simples do que a ciência observa</p>
+    <div class="chem-columns reveal" id="chem-animation">
+      <div class="chem-col">
+        <h4>Banisteriopsis caapi</h4>
+        <div class="chem-flow">
+          <div class="chem-step" data-step="0"><b>Banisteriopsis caapi</b><br>o cipó</div>
+          <div class="chem-arrow" data-arrow="0">↓</div>
+          <div class="chem-step" data-step="1">contém <b>β-carbolinas</b> (como harmina e harmalina)</div>
+          <div class="chem-arrow" data-arrow="1">↓</div>
+          <div class="chem-step" data-step="2">que promovem <b>inibição da enzima MAO</b> no organismo</div>
+        </div>
+      </div>
+      <div class="chem-col">
+        <h4>Psychotria viridis</h4>
+        <div class="chem-flow">
+          <div class="chem-step" data-step="3"><b>Psychotria viridis</b><br>a folha</div>
+          <div class="chem-arrow" data-arrow="2">↓</div>
+          <div class="chem-step" data-step="4">contém <b>DMT</b> (dimetiltriptamina)</div>
+          <div class="chem-arrow" data-arrow="3">↓</div>
+          <div class="chem-step" data-step="5">a combinação das duas plantas permite uma <b>interação farmacológica</b>: a inibição da MAO possibilita que o DMT, normalmente degradado pelo organismo por via oral, se torne ativo</div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal" style="max-width:700px;margin:26px auto 0;text-align:center;color:var(--text-dim);font-size:.82rem;">Esta explicação é simplificada e tem fins educativos. Não apresentamos receitas, proporções, doses ou métodos de preparo.</p>
+
+    <h3 class="reveal" style="text-align:center;color:var(--gold);margin:70px 0 30px;">Linha do Tempo</h3>
+    <div class="timeline reveal" id="timeline"></div>
+
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="ayahuasca">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- CIÊNCIA -->
+<section id="ciencia">
+  <div class="container">
+    <h2 class="section-title reveal">Ciência e Neurociência</h2>
+    <p class="section-sub reveal">Ciência ≠ Crença ≠ Tradição</p>
+    <div class="sci-grid reveal">
+      <div class="sci-col green">
+        <h4>🟢 Evidências</h4>
+        <ul>
+          <li>Estudos observam alterações agudas em percepção, emoção e estado de consciência associadas à ação do DMT em receptores serotoninérgicos (especialmente 5-HT2A).</li>
+          <li>Pesquisas em neuroimagem relatam mudanças temporárias em padrões de conectividade cerebral durante a experiência.</li>
+          <li>Alguns estudos clínicos preliminares investigam efeitos sobre sintomas depressivos, sempre em contextos controlados.</li>
+        </ul>
+      </div>
+      <div class="sci-col yellow">
+        <h4>🟡 Pesquisas em Andamento</h4>
+        <ul>
+          <li>Mecanismos neurobiológicos completos da experiência ainda estão sendo mapeados.</li>
+          <li>Efeitos terapêuticos de longo prazo carecem de mais estudos clínicos robustos e replicados.</li>
+          <li>Pesquisas sobre segurança, interações medicamentosas e populações de risco seguem em desenvolvimento.</li>
+        </ul>
+      </div>
+      <div class="sci-col violet">
+        <h4>🟣 Interpretações Espirituais</h4>
+        <ul>
+          <li>Tradições descrevem a experiência como encontro com espíritos, entidades ou planos de consciência.</li>
+          <li>Essas interpretações fazem parte de sistemas de significado cultural e religioso, e não são passíveis de comprovação ou refutação científica.</li>
+          <li>Ciência e espiritualidade respondem a perguntas diferentes e não devem ser confundidas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="text-align:center;color:var(--gold);margin:70px 0 24px;">Set &amp; Setting</h3>
+    <div class="setset reveal">
+      <div class="box"><h4 style="color:var(--gold);margin-bottom:10px;">SET</h4><p style="color:var(--text-dim);">Estado psicológico, expectativas, emoções e contexto pessoal de quem vivencia uma experiência.</p></div>
+      <div class="connector">⇄</div>
+      <div class="box"><h4 style="color:var(--gold);margin-bottom:10px;">SETTING</h4><p style="color:var(--text-dim);">Ambiente físico, social e cultural em que a experiência ocorre.</p></div>
+    </div>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="ciencia">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURA & ÉTICA -->
+<section id="cultura">
+  <div class="container">
+    <h2 class="section-title reveal">Cultura &amp; Ética</h2>
+    <p class="section-sub reveal">Respeito às tradições</p>
+    <div class="gallery reveal">
+      <div class="gal-card" data-modal="apropriacao"><span class="emoji">🎭</span><h4>Apropriação Cultural</h4><p>O que é e por que importa</p></div>
+      <div class="gal-card" data-modal="diversidade"><span class="emoji">🪶</span><h4>Diversidade Indígena</h4><p>Não existe uma única "cultura indígena"</p></div>
+      <div class="gal-card" data-modal="conhecimento-tradicional"><span class="emoji">📖</span><h4>Conhecimento Tradicional</h4><p>A importância dos povos guardiões</p></div>
+      <div class="gal-card" data-modal="etica"><span class="emoji">⚖️</span><h4>Ética</h4><p>Respeito, contexto, autoria e responsabilidade</p></div>
+    </div>
+    <p class="big-phrase reveal">"Xamanismo não é uma tradição única."</p>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="cultura">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- SEGURANÇA -->
+<section id="seguranca">
+  <div class="container">
+    <h2 class="section-title reveal">⚠️ Segurança e Responsabilidade</h2>
+    <p class="section-sub reveal">Informações essenciais antes de qualquer decisão</p>
+    <div class="alert-box reveal" style="max-width:820px;margin:0 auto;">
+      <p><strong>Interações medicamentosas:</strong> substâncias como as presentes na ayahuasca e no tabaco podem interagir perigosamente com diversos medicamentos, incluindo antidepressivos (especialmente ISRS e IMAOs) e outras substâncias.</p>
+      <p><strong>Riscos à saúde:</strong> condições cardiovasculares, psiquiátricas (como histórico de psicose ou transtorno bipolar) e outras condições clínicas podem representar riscos elevados.</p>
+      <p><strong>Avaliação profissional:</strong> qualquer decisão relacionada a essas substâncias deve envolver avaliação médica e psicológica prévia, feita por profissionais qualificados.</p>
+      <p><strong>Efeitos imprevisíveis:</strong> experiências podem ser intensas e imprevisíveis, tanto física quanto psicologicamente.</p>
+      <p><strong>Fontes confiáveis:</strong> busque sempre informações de fontes científicas, institucionais e culturais confiáveis — evite conteúdos sensacionalistas ou não verificados.</p>
+      <p style="margin-top:16px;"><strong>Informações sobre saúde devem ser discutidas com profissionais qualificados.</strong></p>
+    </div>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="seguranca">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSÁRIO -->
+<section id="glossario">
+  <div class="container">
+    <h2 class="section-title reveal">Glossário</h2>
+    <p class="section-sub reveal">Pesquise um termo</p>
+    <div class="glossary-search reveal">
+      <input type="text" id="glossary-input" placeholder="🔎 Pesquisar um termo...">
+    </div>
+    <div class="glossary-grid reveal" id="glossary-grid"></div>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="glossario">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA DO CONHECIMENTO -->
+<section id="mapa">
+  <div class="container">
+    <h2 class="section-title reveal">Mapa do Conhecimento</h2>
+    <p class="section-sub reveal">Clique em cada etapa para explorar</p>
+    <div class="kmap reveal">
+      <button class="tree-node" data-target="cosmovisao">NATUREZA</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-target="cosmovisao">COSMOVISÃO</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-target="instrumentos">RITUAIS</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-target="ayahuasca">PLANTAS</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-target="cultura">CULTURA</button>
+      <div class="tree-arrow">↓</div>
+      <button class="tree-node" data-target="ciencia">CIÊNCIA</button>
+    </div>
+  </div>
+</section>
+
+<!-- FONTES -->
+<section id="fontes">
+  <div class="container">
+    <h2 class="section-title reveal">Fontes e Referências</h2>
+    <p class="section-sub reveal">Este conteúdo foi baseado em fontes reais de história, antropologia, botânica e neurociência</p>
+    <div class="source-grid reveal">
+      <div class="source-col">
+        <h4>📚 História e Antropologia</h4>
+        <ul>
+          <li>Eliade, Mircea. <em>O Xamanismo e as Técnicas Arcaicas do Êxtase</em>.</li>
+          <li>Langdon, E. Jean. <em>Xamanismo no Brasil: Novas Perspectivas</em>.</li>
+          <li>Luna, Luis Eduardo. <em>Vegetalismo: Shamanism Among the Mestizo Population of the Peruvian Amazon</em>.</li>
+          <li>Labate, Beatriz Caiuby; Araújo, Wladimyr Sena (orgs). <em>O Uso Ritual da Ayahuasca</em>.</li>
+        </ul>
+      </div>
+      <div class="source-col">
+        <h4>🌿 Botânica</h4>
+        <ul>
+          <li>Schultes, Richard Evans; Hofmann, Albert. <em>Plants of the Gods</em>.</li>
+          <li><a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF — Global Biodiversity Information Facility</a> (dados sobre <em>Banisteriopsis caapi</em>, <em>Psychotria viridis</em> e <em>Nicotiana rustica</em>)</li>
+          <li><a href="https://powo.science.kew.org" target="_blank" rel="noopener">Plants of the World Online — Royal Botanic Gardens, Kew</a></li>
+        </ul>
+      </div>
+      <div class="source-col">
+        <h4>🧠 Neurociência</h4>
+        <ul>
+          <li>McKenna, Dennis J. et al. Pesquisas farmacológicas sobre β-carbolinas e DMT na ayahuasca.</li>
+          <li>Riba, Jordi et al. Estudos sobre efeitos psicofarmacológicos da ayahuasca.</li>
+          <li><a href="https://www.ncbi.nlm.nih.gov/pmc/" target="_blank" rel="noopener">PubMed Central — National Library of Medicine</a></li>
+        </ul>
+      </div>
+      <div class="source-col">
+        <h4>🏛️ Fontes Institucionais</h4>
+        <ul>
+          <li><a href="https://www.gov.br/funai/" target="_blank" rel="noopener">FUNAI — Fundação Nacional dos Povos Indígenas</a></li>
+          <li><a href="https://www.socioambiental.org" target="_blank" rel="noopener">Instituto Socioambiental (ISA) — Povos Indígenas no Brasil</a></li>
+          <li><a href="https://www.gov.br/anvisa/" target="_blank" rel="noopener">Anvisa</a> — regulação de substâncias no Brasil</li>
+        </ul>
+      </div>
+      <div class="source-col">
+        <h4>🪶 Pesquisadores e Autores Indígenas</h4>
+        <ul>
+          <li>Kopenawa, Davi; Albert, Bruce. <em>A Queda do Céu: Palavras de um Xamã Yanomami</em>.</li>
+          <li>Krenak, Ailton. <em>Ideias para Adiar o Fim do Mundo</em>.</li>
+          <li>Munduruku, Daniel. Diversas obras sobre cultura e cosmovisão indígena.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button class="learn-btn" data-section="fontes">✓ Marcar como aprendido</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span class="logo">🌿 GUIA DO XAMÃ</span>
+    <p class="tagline">"Conhecimento, natureza, tradição e respeito."</p>
+    <div class="foot-links">
+      <a href="#inicio">Início</a>
+      <a href="#glossario">Glossário</a>
+      <a href="#fontes">Fontes</a>
+      <a href="#seguranca">Segurança</a>
+    </div>
+    <p class="disclaimer">Este site possui finalidade educativa e cultural. Não substitui orientação médica, psicológica ou o conhecimento transmitido pelos povos e comunidades tradicionais.</p>
+    <p class="disclaimer">As tradições indígenas são diversas. Nenhuma explicação apresentada aqui deve ser interpretada como representação universal de todos os povos originários.</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Fechar">✕</button>
+    <div class="modal-icon" id="modal-icon"></div>
+    <h3 id="modal-title"></h3>
+    <div class="cat" id="modal-cat"></div>
+    <div id="modal-body"></div>
+    <div class="related" id="modal-related"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ===================== DATA ===================== */
+const SECTIONS = ["inicio","fundamentos","cosmovisao","animais","instrumentos","rape","ayahuasca","ciencia","cultura","seguranca","glossario","fontes"];
+
+const FUNDAMENTOS = [
+  {
+    title:"O papel do xamã / pajé",
+    summary:"Curador, conselheiro e guardião de conhecimentos ancestrais.",
+    body:`<p>Em diversas tradições, a pessoa que ocupa esse papel atua como <b>curador</b>, cuidando da saúde física, emocional e espiritual da comunidade através de plantas, rituais e conhecimentos transmitidos por gerações.</p>
+    <p>Também atua como <b>conselheiro</b>, ajudando a comunidade em decisões importantes, e como <b>especialista ritual</b>, conduzindo cerimônias específicas de cada tradição.</p>
+    <p>É frequentemente considerado um <b>guardião de conhecimentos</b> — mantendo viva a <b>memória coletiva</b> do povo, incluindo histórias, cantos, técnicas e relações profundas com plantas e a natureza.</p>
+    <p><strong>Importante:</strong> "xamã" é um termo amplo, de origem sibéria (povo Evenki), popularizado por antropólogos ocidentais para descrever fenômenos semelhantes em diferentes culturas. Cada povo possui seu próprio termo específico — como "pajé" em diversas línguas indígenas brasileiras, ou outros nomes em centenas de línguas e tradições ao redor do mundo. Usar "xamã" como palavra-guarda-chuva é útil para fins didáticos, mas não deve apagar as especificidades de cada tradição.</p>`,
+    tags:["Tradição","Antropologia"]
+  },
+  {
+    title:"O que é xamanismo?",
+    summary:"Um conjunto amplo e diverso de práticas, não uma religião única.",
+    body:`<p>O xamanismo não é uma religião organizada única, mas um termo guarda-chuva usado para descrever um conjunto amplo de práticas encontradas em diferentes culturas ao redor do mundo, que geralmente envolvem estados alterados de consciência, mediação entre mundos e relação profunda com a natureza.</p>
+    <p>Cada tradição possui suas próprias cosmologias, rituais, cantos, plantas e formas de conhecimento — não devem ser tratadas como intercambiáveis.</p>`,
+    tags:["Definição","Cultura"]
+  },
+  {
+    title:"Transmissão de conhecimento",
+    summary:"Como os saberes são passados entre gerações.",
+    body:`<p>Em muitas tradições, o conhecimento é transmitido oralmente, através de longos processos de aprendizado, observação, iniciação e vivência prática ao lado de anciãos e especialistas — um processo que pode levar décadas.</p>
+    <p>Esse conhecimento é frequentemente considerado propriedade coletiva do povo, e não individual — o que tem implicações éticas importantes sobre como ele deve (ou não) ser compartilhado fora do seu contexto original.</p>`,
+    tags:["Transmissão","Ética"]
+  }
+];
+
+const ANIMALS = [
+  {id:"puma", emoji:"🐆", name:"Puma", desc:"Associado à força, liderança e coragem silenciosa em diversas culturas andinas e amazônicas.", cult:"Presente em cosmologias andinas (como a representação do Puma em Cusco) e em diversas narrativas amazônicas como figura de poder e proteção."},
+  {id:"onca", emoji:"🐆", name:"Onça", desc:"Um dos animais mais emblemáticos da floresta amazônica, associado a poder, transformação e ao mundo espiritual.", cult:"Em diversas tradições amazônicas, a onça é vista como capaz de transitar entre o mundo humano e o mundo espiritual, sendo tema central em muitas narrativas xamânicas."},
+  {id:"aguia", emoji:"🦅", name:"Águia", desc:"Associada à visão ampliada, elevação espiritual e conexão com o mundo superior em diversas culturas.", cult:"Presente como símbolo de poder e visão em tradições indígenas norte-americanas e em diversas culturas ao redor do mundo."},
+  {id:"serpente", emoji:"🐍", name:"Serpente", desc:"Frequentemente associada à transformação, cura e conhecimento profundo, além de estar presente em narrativas sobre a origem da ayahuasca em diversas tradições.", cult:"Em muitas culturas amazônicas, serpentes como a sucuri aparecem em mitos de origem e são associadas às visões durante rituais tradicionais."},
+  {id:"coruja", emoji:"🦉", name:"Coruja", desc:"Associada à sabedoria, à noite e à capacidade de enxergar o que está oculto.", cult:"Presente em diversas mitologias como guardiã de conhecimento noturno e mediadora entre mundos."},
+  {id:"lobo", emoji:"🐺", name:"Lobo", desc:"Associado a instinto, comunidade e lealdade em diversas tradições do hemisfério norte.", cult:"Figura central em cosmologias de povos indígenas norte-americanos e euroasiáticos, associada à vida em matilha e à proteção coletiva."},
+  {id:"tartaruga", emoji:"🐢", name:"Tartaruga", desc:"Em diversas cosmologias indígenas das Américas, está associada à criação do mundo e à estabilidade.", cult:"Presente no mito da 'Ilha Tartaruga', usado por diversos povos indígenas norte-americanos para descrever a origem do continente."},
+  {id:"jiboia", emoji:"🐍", name:"Jiboia", desc:"Grande serpente amazônica frequentemente relacionada a narrativas de origem e força ancestral.", cult:"Presente em diversas cosmologias amazônicas como figura de respeito e poder, associada à mata e às águas."}
+];
+
+const INSTRUMENTS = [
+  {id:"tambor", emoji:"🥁", name:"Tambor",
+    body:`<p><b>História:</b> instrumentos de percussão estão entre os mais antigos objetos rituais da humanidade, presentes em praticamente todas as culturas do mundo.</p>
+    <p><b>Materiais:</b> tradicionalmente feitos com madeira, couro de animais e fibras naturais, variando conforme os recursos disponíveis em cada região.</p>
+    <p><b>Uso cultural:</b> utilizado em cerimônias, danças, cantos e rituais coletivos, muitas vezes marcando o ritmo de cerimônias ou acompanhando cânticos.</p>
+    <p><b>Simbolismo:</b> em determinadas tradições, acredita-se que o som do tambor represente o batimento cardíaco da Terra ou sirva como elemento de conexão comunitária e espiritual.</p>`},
+  {id:"maraca", emoji:"🪇", name:"Maracá",
+    body:`<p><b>História:</b> chocalhos feitos de cabaça (cuia) são amplamente utilizados por povos indígenas das Américas há séculos, sendo um dos instrumentos rituais mais difundidos.</p>
+    <p><b>Materiais:</b> geralmente feitos de cabaça seca, preenchidos com sementes, e podem incluir hastes de madeira e decorações com penas.</p>
+    <p><b>Uso cultural:</b> presente em rituais de cura, cerimônias religiosas e práticas de figuras como pajés, xamãs e curandeiros em diversas tradições.</p>
+    <p><b>Simbolismo:</b> em determinadas tradições, acredita-se que o som do maracá auxilie a marcar cânticos ritualísticos e a estruturar momentos específicos da cerimônia.</p>`},
+  {id:"cajado", emoji:"🪵", name:"Cajado",
+    body:`<p><b>História:</b> bastões e cajados cerimoniais aparecem em diversas culturas como símbolos de autoridade, sabedoria e conexão com ancestrais.</p>
+    <p><b>Materiais:</b> geralmente esculpidos em madeira, podem incluir penas, pedras, cristais e outros elementos naturais.</p>
+    <p><b>Uso cultural:</b> associado a lideranças espirituais e utilizado em determinados rituais e caminhadas cerimoniais.</p>
+    <p><b>Simbolismo:</b> em determinadas tradições, o cajado é associado à conexão entre o céu e a terra, ou à autoridade espiritual de quem o carrega.</p>`},
+  {id:"outros-objetos", emoji:"🌿", name:"Outros Objetos",
+    body:`<p>Diversas tradições utilizam objetos como penas, cristais, colares de sementes, pinturas corporais e cachimbos cerimoniais, cada um com significados culturais específicos.</p>
+    <p><b>Uso cultural:</b> esses objetos frequentemente carregam significados relacionados à proteção, identidade cultural, status espiritual e conexão com ancestrais.</p>
+    <p><b>Simbolismo:</b> em determinadas tradições, acredita-se que certos objetos guardem ou transmitam qualidades específicas — mas essas crenças pertencem ao campo espiritual e cultural, não ao campo científico.</p>`}
+];
+
+const MODALS = {
+  "ser-humano":{icon:"🧍",title:"Ser Humano",cat:["Cosmovisão"],body:"<p>Em diversas cosmovisões indígenas, o ser humano não é visto como separado ou superior à natureza, mas como parte integrante de uma rede de relações que inclui animais, plantas, espíritos e o território.</p>"},
+  "natureza":{icon:"🌳",title:"Natureza",cat:["Cosmovisão"],body:"<p>A natureza, nessas cosmovisões, não é um recurso a ser explorado, mas um conjunto de relações vivas e recíprocas — rios, florestas e territórios são frequentemente compreendidos como entidades com as quais se estabelece um vínculo de respeito e reciprocidade.</p>"},
+  "animais-cosmo":{icon:"🐾",title:"Animais",cat:["Cosmovisão"],body:"<p>Animais frequentemente ocupam papel central nas cosmologias indígenas — como parentes, mensageiros, guias ou figuras de poder presentes em mitos de origem e narrativas tradicionais.</p>"},
+  "plantas-cosmo":{icon:"🌱",title:"Plantas",cat:["Cosmovisão"],body:"<p>Plantas são frequentemente compreendidas como portadoras de conhecimento e cura, com relações estabelecidas através de gerações de observação, uso e respeito cultural.</p>"},
+  "espirito-cosmo":{icon:"✨",title:"Espírito / Cosmologia",cat:["Cosmovisão"],body:"<p>No topo dessa rede de relações, muitas cosmovisões situam uma dimensão espiritual ou cosmológica que conecta e dá sentido a todas as demais relações — variando profundamente de povo para povo.</p>"},
+  "mundo-inferior":{icon:"🌑",title:"Mundo Inferior",cat:["Três Mundos","Interpretação Espiritual"],body:"<p>Em determinados sistemas contemporâneos de xamanismo, o Mundo Inferior é descrito como um domínio associado a ancestralidade, forças instintivas e conhecimentos profundos, frequentemente acessado através de estados alterados de consciência em práticas específicas.</p><p><strong>Nota:</strong> essa estrutura de três mundos não é universal entre todos os povos indígenas — muitos possuem suas próprias cosmologias, distintas dessa divisão.</p>"},
+  "mundo-medio":{icon:"🌎",title:"Mundo Médio",cat:["Três Mundos"],body:"<p>O Mundo Médio corresponde, nesses sistemas, à realidade cotidiana e visível — o plano onde vivemos e nos relacionamos fisicamente com o mundo.</p>"},
+  "mundo-superior":{icon:"✨",title:"Mundo Superior",cat:["Três Mundos","Interpretação Espiritual"],body:"<p>O Mundo Superior é descrito, nesses sistemas, como um domínio associado a sabedoria, visão ampliada e orientação espiritual.</p><p><strong>Nota:</strong> assim como o mundo inferior, essa é uma categoria de determinados sistemas contemporâneos e não uma representação universal.</p>"},
+  "apropriacao":{icon:"🎭",title:"Apropriação Cultural",cat:["Cultura","Ética"],body:"<p>Apropriação cultural ocorre quando elementos de uma cultura — símbolos, práticas, vestimentas, rituais — são retirados de seu contexto original e utilizados por pessoas de fora dessa cultura, frequentemente sem entendimento, permissão ou reconhecimento adequado, e às vezes com fins comerciais.</p><p>Isso é especialmente sensível quando envolve práticas sagradas de povos historicamente marginalizados, cujos conhecimentos foram — e continuam sendo — desrespeitados ou explorados.</p>"},
+  "diversidade":{icon:"🪶",title:"Diversidade Indígena",cat:["Cultura"],body:"<p>Existem centenas de povos indígenas apenas no Brasil, cada um com línguas, cosmologias, práticas e histórias distintas. Generalizar 'os indígenas' como um grupo homogêneo apaga essa riqueza e complexidade.</p><p>O mesmo vale globalmente: tradições xamânicas siberianas, amazônicas, andinas e norte-americanas são profundamente diferentes entre si.</p>"},
+  "conhecimento-tradicional":{icon:"📖",title:"Conhecimento Tradicional",cat:["Cultura","Ética"],body:"<p>O conhecimento tradicional sobre plantas, rituais e cosmologia é fruto de gerações de observação e prática, frequentemente mantido e transmitido pelos próprios povos que o originaram — os chamados 'povos guardiões' desse saber.</p><p>Reconhecer essa autoria coletiva é fundamental para qualquer discussão respeitosa sobre esses temas.</p>"},
+  "etica":{icon:"⚖️",title:"Ética",cat:["Cultura","Ética"],body:"<p>Uma abordagem ética a esses temas envolve: <b>respeito</b> às tradições e seus contextos originais; reconhecimento da <b>autoria</b> coletiva dos povos; <b>responsabilidade</b> ao compartilhar informações; e atenção ao <b>contexto</b> em que cada prática existe.</p>"},
+  "nicotiana-rustica":{icon:"🌿",title:"Nicotiana rustica",cat:["Botânica"],body:"<p><b>Nome científico:</b> Nicotiana rustica L.</p><p><b>Família:</b> Solanaceae</p><p><b>Características:</b> planta herbácea de folhas grandes, com maior concentração de nicotina do que a espécie comercial Nicotiana tabacum.</p><p><b>Distribuição:</b> nativa das Américas, cultivada tradicionalmente por diversos povos indígenas em várias regiões do continente.</p><p><b>Contextos tradicionais:</b> utilizada em preparações rituais, incluindo misturas de rapé, em diversas tradições amazônicas e norte-americanas.</p>"},
+  "kuripe":{icon:"🪈",title:"Kuripe",cat:["Instrumento","Rapé"],body:"<p>Aplicador tradicional em formato de 'V', utilizado para autoaplicação — a própria pessoa insere uma extremidade na narina e sopra através da outra.</p><p>Feito tradicionalmente de madeira, osso ou bambu, com variações estéticas entre diferentes povos e artesãos.</p>"},
+  "tepi":{icon:"🪈",title:"Tepi",cat:["Instrumento","Rapé"],body:"<p>Aplicador tubular mais longo, utilizado para aplicação compartilhada entre duas pessoas — uma sopra através do tubo para a narina da outra.</p><p>Representa, em diversas tradições, um gesto de cuidado, cura e conexão entre quem aplica e quem recebe.</p>"},
+  "banisteriopsis":{icon:"🌿",title:"Banisteriopsis caapi",cat:["Botânica","Ayahuasca"],body:"<p><b>Nomes populares:</b> Mariri, Jagube, Cipó.</p><p><b>Família:</b> Malpighiaceae.</p><p><b>Características:</b> liana (cipó) lenhosa nativa da bacia amazônica, cujo caule é utilizado na preparação tradicional da ayahuasca.</p><p><b>Composição:</b> contém alcaloides do tipo β-carbolinas (como harmina, harmalina e tetrahidroharmina).</p><p><b>Contextos tradicionais:</b> considerada, em muitas tradições, o elemento 'mestre' ou condutor da bebida, associado a ensinamentos e disciplina.</p>"},
+  "psychotria":{icon:"🌿",title:"Psychotria viridis",cat:["Botânica","Ayahuasca"],body:"<p><b>Nomes populares:</b> Chacrona, Rainha.</p><p><b>Família:</b> Rubiaceae.</p><p><b>Características:</b> arbusto nativo da Amazônia, cujas folhas são adicionadas à preparação tradicional da ayahuasca.</p><p><b>Composição:</b> contém DMT (N,N-dimetiltriptamina) em suas folhas.</p><p><b>Contextos tradicionais:</b> associada, em diversas tradições, às visões e ao conteúdo simbólico da experiência.</p>"}
+};
+
+const TIMELINE = [
+  {icon:"🪶",title:"Tradições Indígenas",body:"O uso ritual da ayahuasca tem origem em povos indígenas da bacia amazônica, com práticas que remontam a séculos, transmitidas oralmente entre gerações de curandeiros e xamãs."},
+  {icon:"🌎",title:"Difusão Regional",body:"Ao longo do tempo, o uso da bebida se difundiu entre diferentes povos e regiões da Amazônia e dos Andes, sendo incorporado por populações mestiças (vegetalismo) em países como Peru, Colômbia e Brasil."},
+  {icon:"⛪",title:"Religiões Ayahuasqueiras",body:"No século XX, surgiram no Brasil religiões que incorporam a ayahuasca como sacramento central, entre elas o Santo Daime (fundado por Raimundo Irineu Serra), a União do Vegetal - UDV (fundada por José Gabriel da Costa) e a Barquinha (fundada por Daniel Pereira de Mattos)."},
+  {icon:"🏙️",title:"Contexto Contemporâneo",body:"Atualmente, o uso da ayahuasca se expandiu para contextos urbanos e internacionais, envolvendo turismo espiritual, centros de cura neoxamânicos e debates legais e éticos sobre seu uso fora dos contextos tradicionais."},
+  {icon:"🔬",title:"Pesquisa Científica",body:"Nas últimas décadas, pesquisadores de diversas áreas — farmacologia, neurociência, psiquiatria e antropologia — têm estudado os efeitos, composição química e potenciais terapêuticos da bebida em contextos controlados."}
+];
+
+const GLOSSARY = [
+  {term:"Xamanismo", def:"Termo amplo usado para descrever práticas de mediação entre mundos, cura e conexão com a natureza, presentes em diversas culturas."},
+  {term:"Pajé", def:"Termo utilizado por diversos povos indígenas brasileiros para a figura de curador, conselheiro e guardião de conhecimentos."},
+  {term:"Animismo", def:"Categoria antropológica que descreve cosmologias nas quais elementos naturais possuem espírito ou agência."},
+  {term:"Cosmovisão", def:"Forma como uma cultura compreende e organiza sua relação com o mundo, o universo e o sagrado."},
+  {term:"Maracá", def:"Chocalho ritual tradicionalmente feito de cabaça, utilizado em cerimônias por diversos povos indígenas."},
+  {term:"Kuripe", def:"Aplicador de rapé para uso individual (autoaplicação), em formato de 'V'."},
+  {term:"Tepi", def:"Aplicador de rapé tubular, utilizado para aplicação compartilhada entre duas pessoas."},
+  {term:"Rapé", def:"Mistura em pó à base de tabaco, utilizada ritualmente por diversos povos amazônicos."},
+  {term:"Nixi Pae", def:"Nome dado à ayahuasca entre povos de língua Pano."},
+  {term:"Yagé", def:"Nome dado à ayahuasca em regiões andino-amazônicas de língua espanhola."},
+  {term:"Daime", def:"Nome dado à ayahuasca no contexto das religiões ayahuasqueiras brasileiras, como o Santo Daime."},
+  {term:"Mariri", def:"Nome popular dado ao cipó Banisteriopsis caapi."},
+  {term:"Jagube", def:"Outro nome popular para o cipó Banisteriopsis caapi, usado especialmente no Santo Daime."},
+  {term:"Chacrona", def:"Nome popular dado às folhas de Psychotria viridis."},
+  {term:"DMT", def:"Dimetiltriptamina — composto psicoativo presente nas folhas de Psychotria viridis, entre outras plantas."},
+  {term:"MAO", def:"Monoamina oxidase — enzima do organismo cuja inibição por β-carbolinas permite a ação oral do DMT na ayahuasca."},
+  {term:"Set", def:"Estado psicológico, expectativas e contexto pessoal de quem vivencia uma experiência."},
+  {term:"Setting", def:"Ambiente físico, social e cultural em que uma experiência ocorre."},
+  {term:"Ritual", def:"Sequência de ações simbólicas realizadas em um contexto cultural ou religioso específico."},
+  {term:"Cosmologia", def:"Sistema de crenças sobre a origem, estrutura e funcionamento do universo em uma determinada cultura."}
+];
+
+const SEARCH_INDEX = [
+  {keywords:["dmt","psychotria","chacrona"], section:"ayahuasca", label:"Ayahuasca → Química da Ayahuasca"},
+  {keywords:["mao","beta-carbolina","betacarbolina","harmina"], section:"ayahuasca", label:"Ayahuasca → Química da Ayahuasca"},
+  {keywords:["maraca","maracá"], section:"instrumentos", label:"Instrumentos → Maracá"},
+  {keywords:["tambor"], section:"instrumentos", label:"Instrumentos → Tambor"},
+  {keywords:["cajado"], section:"instrumentos", label:"Instrumentos → Cajado"},
+  {keywords:["animismo"], section:"cosmovisao", label:"Cosmovisão → Animismo"},
+  {keywords:["mundo inferior","mundo medio","mundo médio","mundo superior","tres mundos","três mundos"], section:"cosmovisao", label:"Cosmovisão → Os Três Mundos"},
+  {keywords:["rape","rapé","kuripe","tepi","nicotiana"], section:"rape", label:"Rapé"},
+  {keywords:["ayahuasca","yage","yagé","daime","nixi pae","banisteriopsis","mariri","jagube"], section:"ayahuasca", label:"Ayahuasca"},
+  {keywords:["onca","onça","puma","aguia","águia","serpente","coruja","lobo","tartaruga","jiboia","animal de poder"], section:"animais", label:"Animais de Poder"},
+  {keywords:["ciencia","ciência","neurociencia","neurociência"], section:"ciencia", label:"Ciência e Neurociência"},
+  {keywords:["set","setting"], section:"ciencia", label:"Ciência → Set & Setting"},
+  {keywords:["apropriacao","apropriação"], section:"cultura", label:"Cultura & Ética → Apropriação Cultural"},
+  {keywords:["etica","ética"], section:"cultura", label:"Cultura & Ética → Ética"},
+  {keywords:["seguranca","segurança","risco"], section:"seguranca", label:"Segurança e Responsabilidade"},
+  {keywords:["paje","pajé","xama","xamã","xamanismo"], section:"fundamentos", label:"Fundamentos do Xamanismo"},
+  {keywords:["timeline","linha do tempo","santo daime","uniao do vegetal","união do vegetal","barquinha"], section:"ayahuasca", label:"Ayahuasca → Linha do Tempo"}
+];
+
+/* ===================== INTRO ===================== */
+document.getElementById("btn-enter").addEventListener("click", function(){
+  document.getElementById("intro").classList.add("hide");
+  document.body.style.overflow = "auto";
+});
+
+/* ===================== BACKGROUND FX ===================== */
+function initStars(){
+  const wrap = document.getElementById("stars");
+  const frag = document.createDocumentFragment();
+  const count = window.innerWidth < 700 ? 40 : 80;
+  for(let i=0;i<count;i++){
+    const s = document.createElement("div");
+    s.className = "star";
+    const size = Math.random()*2+1;
+    s.style.width = size+"px";
+    s.style.height = size+"px";
+    s.style.left = Math.random()*100+"%";
+    s.style.top = Math.random()*70+"%";
+    s.style.animationDelay = (Math.random()*4)+"s";
+    frag.appendChild(s);
+  }
+  wrap.appendChild(frag);
+}
+function initLeaves(){
+  const wrap = document.getElementById("leaves-container");
+  const leaves = ["🍃","🌿","🍂"];
+  const count = window.innerWidth < 700 ? 6 : 12;
+  for(let i=0;i<count;i++){
+    const l = document.createElement("div");
+    l.className = "leaf";
+    l.textContent = leaves[Math.floor(Math.random()*leaves.length)];
+    l.style.left = Math.random()*100+"%";
+    l.style.animationDuration = (14+Math.random()*14)+"s";
+    l.style.animationDelay = (Math.random()*20)+"s";
+    l.style.fontSize = (14+Math.random()*10)+"px";
+    wrap.appendChild(l);
+  }
+}
+initStars();
+initLeaves();
+
+/* ===================== NAVBAR / HAMBURGER ===================== */
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+hamburger.addEventListener("click", function(){
+  const open = navLinks.classList.toggle("open");
+  hamburger.setAttribute("aria-expanded", open ? "true":"false");
+});
+navLinks.querySelectorAll("a").forEach(a=>{
+  a.addEventListener("click", ()=>{ navLinks.classList.remove("open"); hamburger.setAttribute("aria-expanded","false"); });
+});
+
+/* highlight active nav link */
+const navAnchors = Array.from(navLinks.querySelectorAll("a"));
+function updateActiveNav(){
+  let current = "inicio";
+  SECTIONS.forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){
+      const rect = el.getBoundingClientRect();
+      if(rect.top <= 140 && rect.bottom > 140) current = id;
+    }
+  });
+  navAnchors.forEach(a=>{
+    a.classList.toggle("active", a.getAttribute("href") === "#"+current);
+  });
+}
+window.addEventListener("scroll", updateActiveNav, {passive:true});
+
+/* ===================== PROGRESS TRACKING ===================== */
+const STORAGE_KEY_VISITED = "guiaxama_visited";
+const STORAGE_KEY_LEARNED = "guiaxama_learned";
+
+function getSet(key){
+  try{ return new Set(JSON.parse(localStorage.getItem(key)) || []); }catch(e){ return new Set(); }
+}
+function saveSet(key, set){
+  try{ localStorage.setItem(key, JSON.stringify(Array.from(set))); }catch(e){}
+}
+let visited = getSet(STORAGE_KEY_VISITED);
+let learned = getSet(STORAGE_KEY_LEARNED);
+const TRACKABLE = SECTIONS.filter(s=>s!=="inicio");
+
+function updateProgress(){
+  const combined = new Set([...visited, ...learned]);
+  let count = 0;
+  TRACKABLE.forEach(s=>{ if(combined.has(s)) count++; });
+  const pct = Math.round((count / TRACKABLE.length) * 100);
+  document.getElementById("progress-fill").style.width = pct+"%";
+  document.getElementById("progress-label").textContent = pct+"% explorado";
+}
+
+/* mark learned buttons state on load */
+document.querySelectorAll(".learn-btn").forEach(btn=>{
+  const sec = btn.getAttribute("data-section");
+  if(learned.has(sec)){
+    btn.classList.add("done");
+    btn.textContent = "✓ Aprendido";
+  }
+  btn.addEventListener("click", function(){
+    if(learned.has(sec)){
+      learned.delete(sec);
+      btn.classList.remove("done");
+      btn.textContent = "✓ Marcar como aprendido";
+    } else {
+      learned.add(sec);
+      btn.classList.add("done");
+      btn.textContent = "✓ Aprendido";
+    }
+    saveSet(STORAGE_KEY_LEARNED, learned);
+    updateProgress();
+  });
+});
+
+/* IntersectionObserver: reveal + visited tracking */
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+}, {threshold:0.12});
+document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
+
+const sectionObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && entry.intersectionRatio > 0.25){
+      const id = entry.target.id;
+      if(TRACKABLE.includes(id) && !visited.has(id)){
+        visited.add(id);
+        saveSet(STORAGE_KEY_VISITED, visited);
+        updateProgress();
+      }
+    }
+  });
+}, {threshold:[0.25]});
+SECTIONS.forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) sectionObserver.observe(el);
+});
+
+updateProgress();
+
+/* ===================== MODAL SYSTEM ===================== */
+const overlay = document.getElementById("modal-overlay");
+const modalIcon = document.getElementById("modal-icon");
+const modalTitle = document.getElementById("modal-title");
+const modalCat = document.getElementById("modal-cat");
+const modalBody = document.getElementById("modal-body");
+const modalRelated = document.getElementById("modal-related");
+let lastFocused = null;
+
+function openModalData(data){
+  lastFocused = document.activeElement;
+  modalIcon.textContent = data.icon || "🌿";
+  modalTitle.textContent = data.title || "";
+  modalCat.innerHTML = (data.cat||[]).map(c=>`<span class="tag">${c}</span>`).join("");
+  modalBody.innerHTML = data.body || "";
+  modalRelated.innerHTML = data.related ? `<b>Temas relacionados:</b> ${data.related}` : "";
+  overlay.classList.add("open");
+  document.getElementById("modal-close").focus();
+}
+function closeModal(){
+  overlay.classList.remove("open");
+  if(lastFocused) lastFocused.focus();
+}
+document.getElementById("modal-close").addEventListener("click", closeModal);
+overlay.addEventListener("click", (e)=>{ if(e.target === overlay) closeModal(); });
+document.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape"){
+    if(overlay.classList.contains("open")) closeModal();
+    if(document.getElementById("search-panel").classList.contains("open")) closeSearch();
+  }
+});
+
+/* attach modal triggers by data-modal from static MODALS dict */
+function attachModalTriggers(root){
+  root.querySelectorAll("[data-modal]").forEach(el=>{
+    el.setAttribute("tabindex","0");
+    el.setAttribute("role","button");
+    const key = el.getAttribute("data-modal");
+    const openFn = ()=>{
+      const data = MODALS[key];
+      if(data) openModalData(data);
+    };
+    el.addEventListener("click", openFn);
+    el.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openFn(); }});
+  });
+}
+
+/* ===================== RENDER: FUNDAMENTOS ACCORDION ===================== */
+const accWrap = document.getElementById("fundamentos-accordion");
+FUNDAMENTOS.forEach((item, i)=>{
+  const div = document.createElement("div");
+  div.className = "acc-item";
+  div.innerHTML = `
+    <div class="acc-head" tabindex="0" role="button" aria-expanded="false">
+      <h3>${item.title}</h3>
+      <span class="plus">+</span>
+    </div>
+    <div class="acc-summary">${item.summary}</div>
+    <div class="acc-body">
+      ${item.body}
+      <div class="tag-row">${item.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    </div>`;
+  const head = div.querySelector(".acc-head");
+  function toggle(){
+    const open = div.classList.toggle("open");
+    head.setAttribute("aria-expanded", open?"true":"false");
+  }
+  head.addEventListener("click", toggle);
+  head.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); }});
+  accWrap.appendChild(div);
+});
+
+/* ===================== RENDER: ANIMALS GALLERY ===================== */
+const animalsGallery = document.getElementById("animals-gallery");
+ANIMALS.forEach(a=>{
+  MODALS["animal-"+a.id] = {icon:a.emoji, title:a.name, cat:["Animal de Poder","Simbolismo Cultural"], body:`<p>${a.desc}</p><p><b>Relação cultural:</b> ${a.cult}</p>`};
+  const card = document.createElement("div");
+  card.className = "gal-card";
+  card.setAttribute("data-modal","animal-"+a.id);
+  card.innerHTML = `<span class="emoji">${a.emoji}</span><h4>${a.name}</h4><p>Clique para saber mais</p>`;
+  animalsGallery.appendChild(card);
+});
+
+/* ===================== RENDER: INSTRUMENTS GALLERY ===================== */
+const instGallery = document.getElementById("instruments-gallery");
+INSTRUMENTS.forEach(inst=>{
+  MODALS["inst-"+inst.id] = {icon:inst.emoji, title:inst.name, cat:["Instrumento Ritual"], body:inst.body};
+  const card = document.createElement("div");
+  card.className = "gal-card";
+  card.setAttribute("data-modal","inst-"+inst.id);
+  card.innerHTML = `<span class="emoji">${inst.emoji}</span><h4>${inst.name}</h4><p>Clique para saber mais</p>`;
+  instGallery.appendChild(card);
+});
+
+/* ===================== RENDER: TIMELINE ===================== */
+const timelineWrap = document.getElementById("timeline");
+TIMELINE.forEach((t,i)=>{
+  MODALS["timeline-"+i] = {icon:t.icon, title:t.title, cat:["Linha do Tempo"], body:`<p>${t.body}</p>`};
+  const item = document.createElement("div");
+  item.className = "tl-item";
+  item.setAttribute("data-modal","timeline-"+i);
+  item.innerHTML = `<div class="tl-dot">${t.icon}</div><div class="tl-content"><h4>${t.title}</h4><p>Clique para saber mais</p></div>`;
+  timelineWrap.appendChild(item);
+});
+
+/* now attach modal triggers to everything rendered + static ones */
+attachModalTriggers(document);
+
+/* ===================== TABS (RAPÉ) ===================== */
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click", function(){
+    const tab = btn.getAttribute("data-tab");
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+    const panel = document.getElementById("tab-"+tab);
+    if(panel) panel.classList.add("active");
+  });
+});
+
+/* ===================== CHEMISTRY ANIMATION ===================== */
+const chemWrap = document.getElementById("chem-animation");
+const chemObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const steps = chemWrap.querySelectorAll(".chem-step");
+      const arrows = chemWrap.querySelectorAll(".chem-arrow");
+      steps.forEach((s,i)=> setTimeout(()=>s.classList.add("show"), i*350));
+      arrows.forEach((a,i)=> setTimeout(()=>a.classList.add("show"), i*350+200));
+      chemObserver.unobserve(chemWrap);
+    }
+  });
+}, {threshold:0.3});
+if(chemWrap) chemObserver.observe(chemWrap);
+
+/* ===================== PATH CARDS (home) & KNOWLEDGE MAP nav ===================== */
+document.querySelectorAll("[data-target]").forEach(el=>{
+  el.addEventListener("click", function(){
+    const target = el.getAttribute("data-target");
+    const section = document.getElementById(target);
+    if(section) section.scrollIntoView({behavior:"smooth"});
+  });
+});
+
+/* ===================== GLOSSARY ===================== */
+const glossaryGrid = document.getElementById("glossary-grid");
+function renderGlossary(filter){
+  const f = (filter||"").trim().toLowerCase();
+  const filtered = GLOSSARY.filter(g => g.term.toLowerCase().includes(f) || g.def.toLowerCase().includes(f));
+  glossaryGrid.innerHTML = "";
+  if(filtered.length === 0){
+    glossaryGrid.innerHTML = `<div class="gloss-empty">Nenhum termo encontrado para "${filter}".</div>`;
+    return;
+  }
+  filtered.forEach(g=>{
+    const div = document.createElement("div");
+    div.className = "gloss-item";
+    div.innerHTML = `<b>${g.term}</b><span>${g.def}</span>`;
+    glossaryGrid.appendChild(div);
+  });
+}
+renderGlossary("");
+document.getElementById("glossary-input").addEventListener("input", function(e){
+  renderGlossary(e.target.value);
+});
+
+/* ===================== GLOBAL SEARCH ===================== */
+const searchToggle = document.getElementById("search-toggle");
+const searchPanel = document.getElementById("search-panel");
+const searchInput = document.getElementById("global-search");
+const searchResults = document.getElementById("global-search-results");
+const searchClose = document.getElementById("search-close");
+
+function openSearch(){
+  searchPanel.classList.add("open");
+  setTimeout(()=>searchInput.focus(), 50);
+}
+function closeSearch(){
+  searchPanel.classList.remove("open");
+  searchInput.value = "";
+  searchResults.innerHTML = "";
+}
+searchToggle.addEventListener("click", openSearch);
+searchClose.addEventListener("click", closeSearch);
+searchPanel.addEventListener("click", (e)=>{ if(e.target===searchPanel) closeSearch(); });
+
+function doSearch(query){
+  const q = query.trim().toLowerCase();
+  searchResults.innerHTML = "";
+  if(!q){ return; }
+  const matches = SEARCH_INDEX.filter(item => item.keywords.some(k => k.includes(q) || q.includes(k)));
+  // also search glossary terms directly
+  const glossMatches = GLOSSARY.filter(g => g.term.toLowerCase().includes(q));
+  const seen = new Set();
+  const results = [];
+  matches.forEach(m=>{
+    if(!seen.has(m.label)){ seen.add(m.label); results.push(m); }
+  });
+  glossMatches.forEach(g=>{
+    const label = "Glossário → "+g.term;
+    if(!seen.has(label)){ seen.add(label); results.push({section:"glossario", label:label}); }
+  });
+  if(results.length === 0){
+    searchResults.innerHTML = `<div class="search-result-item">Nenhum resultado para "<b>${query}</b>". Tente: DMT, maracá, animismo, rapé, tambor...</div>`;
+    return;
+  }
+  results.forEach(r=>{
+    const div = document.createElement("div");
+    div.className = "search-result-item";
+    div.setAttribute("tabindex","0");
+    div.setAttribute("role","button");
+    div.innerHTML = `<b>${r.label}</b>`;
+    const go = ()=>{
+      closeSearch();
+      const sec = document.getElementById(r.section);
+      if(sec) sec.scrollIntoView({behavior:"smooth"});
+    };
+    div.addEventListener("click", go);
+    div.addEventListener("keydown",(e)=>{ if(e.key==="Enter"){ go(); }});
+    searchResults.appendChild(div);
+  });
+}
+searchInput.addEventListener("input", (e)=>doSearch(e.target.value));
+
+/* keyboard shortcut: "/" opens search when not typing */
+document.addEventListener("keydown",(e)=>{
+  if(e.key === "/" && document.activeElement.tagName !== "INPUT"){
+    e.preventDefault();
+    openSearch();
+  }
+});
+
+})();
+</script>
+</body>
+</html>
